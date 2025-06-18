@@ -1,0 +1,23 @@
+# COMMON 3 BUTTONS AND A DROPDOWN MENU PRESENT IN ALL TICKETS AND ITS USES AND INSTRUCTION :-
+
+1. CLAIM TICKET/UNCLAIM TICKET :-
+	On start of ticket 'claim ticket' button (green in colour) shows on clicking on it, it changes to 'unclaim ticket' button (red in colour) and then again clicking on it it changes back to 'claim ticket' button and so on. The person who uses this button his name got updated in the embeded msg send by bot on creating ticket and on unclaiming ticket his name removes.
+The person who claims ticket only he and person who creates ticket and people with admin power can talk in that ticket only.
+
+2. CALL STAFF BUTTON :- 
+	On using this button It ask for a conformation msg which can be set by /conformationmsg command and if user clicks yes then the bot will ping the staff role with a custom msg. After the bot pings the staff role the call staff button will be removed.
+
+3. DELETE TICKET BUTTON :-
+	On using this button, BOT WILL SEND a  transcript, creator name, ticket number, category, claimed by and closed by in ticket-logs channel. Then bot will send a EMBEDED message in ticket that 'This ticket will be closed in 10 seconds...' and after 10 seconds bot will delete that ticket channel. Then Bot will send a embedded custom message to ticket creator in dm for feedback with 1 to 5 stars (in yellow colour) buttons and after selecting a button, a dialog box open asking for 1. FEEDBACK 2. SUGGESTIONS. On submitting the form the bot will send the feedback, creator name and ticket number in feedback-logs channel of that server.
+
+4. SET PRIORITY DROPDOWN MENU-
+	It contains 4 options - 
+	1. 🟢 LOW
+	2. 🟡 Medium 
+	3. 🔴 High 
+	4. ⚡ Urgent 
+On selecting high priority it send a embedded custom msg with ticket number, category, creator name and pings staff role in priority channel.
+On selecting urgent priority it send a embedded custom msg with ticket number, category, creator name and pings staff role and admin role in priority channel.
+
+After bot sends message in priority channel the set priority dropdown menu removed.
+

@@ -1,0 +1,166 @@
+====================================================================================================
+                               FakePixel Giveaways Ticket Transcript                                
+====================================================================================================
+
+📋 TICKET INFORMATION
+----------------------------------------------------------------------------------------------------
+Ticket Number: #10020
+Category: Master Dungeon Carry
+Status: open
+
+Creator Information:
+├─ Name: Unknown
+├─ ID: None
+
+Staff Information:
+├─ Name: Unclaimed
+├─ ID: darkwall
+
+Created at: 2025-06-16 14:51:13 UTC
+Total Messages: 29
+Generated at: 2025-06-16 15:08:35 UTC
+
+💬 CONVERSATION LOG
+----------------------------------------------------------------------------------------------------
+[2025-06-16 14:51:19] 00slutcore#4030 (ID: 1384183570016239629):
+    [embed/attachment]
+    [Embed: Title: 🌟 Welcome to FakePixel Giveaways Carry Support! 🌟]
+    [Embed: Description: Thank you for contacting us, <@957550424611749888>! We're doing our best to help you.
+    
+    **Please note:** We know we're not always on time due to the high volume of carry requests. If you're waiting for our help for more than **2 hours**, don't be afraid to click on the **📞 Call for Help** button to receive priority assistance from our Staff faster.
+    
+    **Please do this instead of mentioning Staff directly, even if they're online.**]
+    [Embed: Fields:]
+    [Embed:   - 🎫 Ticket Information: **Ticket #:** 10020
+    **Category:** Master Dungeon Carry
+    **Status:** ✅ Claimed by darkwall]
+    [Embed:   - 📋 What to expect:: • Our team will respond as soon as possible
+    • Please provide all necessary details
+    • Be patient - quality service takes time!]
+    [Embed:   - 📝 Service Details: **In-Game Name:** BeHappyInLife
+    **Floor:** M1
+    **Completion Type:** S+
+    **Number of Carries:** 100]
+
+[2025-06-16 14:51:20] 00slutcore#4030 (ID: 1384183572369244330):
+    <@&1374673745901518920> A new ticket has been created! Please claim it if you are available.
+
+[2025-06-16 14:51:25] 00slutcore#4030 (ID: 1384183594351722661):
+    [embed/attachment]
+    [Embed: Title: ✅ Ticket Claimed]
+    [Embed: Description: Ticket has been claimed by <@1238914120179515402>]
+
+[2025-06-16 14:51:30] darkwall0901_#0 [Staff] (ID: 1384183614304030780):
+    welceom to fakepxiel gw
+
+[2025-06-16 14:51:34] darkwall0901_#0 [Staff] (ID: 1384183630716211353):
+    how many i fler fgn
+
+[2025-06-16 14:51:34] darkwall0901_#0 [Staff] (ID: 1384183632687792139):
+    sdfgsg
+
+[2025-06-16 14:51:35] darkwall0901_#0 [Staff] (ID: 1384183634801594408):
+    sg
+
+[2025-06-16 14:51:35] darkwall0901_#0 [Staff] (ID: 1384183637209124905):
+    gg
+
+[2025-06-16 14:51:36] darkwall0901_#0 [Staff] (ID: 1384183639163666473):
+    g
+
+[2025-06-16 14:51:36] darkwall0901_#0 [Staff] (ID: 1384183641063817317):
+    g
+
+[2025-06-16 14:51:37] darkwall0901_#0 [Staff] (ID: 1384183642926088202):
+    g
+
+[2025-06-16 14:51:37] darkwall0901_#0 [Staff] (ID: 1384183644565798932):
+    g
+
+[2025-06-16 14:51:38] darkwall0901_#0 [Staff] (ID: 1384183646457696286):
+    f
+
+[2025-06-16 14:51:39] darkwall0901_#0 [Staff] (ID: 1384183653327835299):
+    g
+
+[2025-06-16 14:51:45] darkwall0901_#0 [Staff] (ID: 1384183675134152786):
+    phak u :3
+
+[2025-06-16 14:51:45] behappyinlife#0 (ID: 1384183676660875456):
+    Um
+
+[2025-06-16 14:52:03] behappyinlife#0 (ID: 1384183753517170859):
+    <@1238914120179515402> I clicked on master floor it is saying there as example f1
+
+[2025-06-16 14:52:21] darkwall0901_#0 [Staff] (ID: 1384183826351128787):
+    i will fix it in 2min, start he timeer
+
+[2025-06-16 14:54:08] behappyinlife#0 (ID: 1384184277788266579):
+    And max words limit in completion it's 2 and number of carriers max word limit should be 1
+
+[2025-06-16 14:55:00] darkwall0901_#0 [Staff] (ID: 1384184493421891656):
+    fixed
+
+[2025-06-16 14:55:01] darkwall0901_#0 [Staff] (ID: 1384184499025477812):
+    self.carries = discord.ui.TextInput(
+                label="Number of Carries",
+                placeholder="How many carries do you need? (Max 9)",
+                required=True,
+                max_length=1
+            )
+
+[2025-06-16 14:55:14] behappyinlife#0 (ID: 1384184552372572252):
+    Check?
+
+[2025-06-16 14:55:14] darkwall0901_#0 [Staff] (ID: 1384184554490957854):
+    i am fast boii
+
+[2025-06-16 14:55:19] darkwall0901_#0 [Staff] (ID: 1384184574367760507):
+    yeah
+
+[2025-06-16 14:55:20] darkwall0901_#0 [Staff] (ID: 1384184578377252996):
+    lemmi
+
+[2025-06-16 15:00:26] behappyinlife#0 (ID: 1384185863596150785):
+    <@1238914120179515402>
+    [Attachment: image.png (52.0 KB)]
+
+[2025-06-16 15:00:39] darkwall0901_#0 [Staff] (ID: 1384185915613909032):
+    yeah
+
+[2025-06-16 15:00:40] behappyinlife#0 (ID: 1384185920541950165):
+    and i typed F1 it is letting me add f floors
+
+[2025-06-16 15:08:42] 00slutcore#4030 (ID: 1384187942079041599):
+    [embed/attachment]
+    [Embed: Title: 🔒 Ticket Closing]
+    [Embed: Description: This ticket will be deleted in 10 seconds...
+    
+    **Close Reason:** qqqqq
+    **Closed by:** <@1238914120179515402>
+    
+    📋 **Generating transcript...** Please wait...]
+
+👥 PARTICIPANTS
+----------------------------------------------------------------------------------------------------
+• 00slutcore#4030
+  ├─ ID: 1382691402542219395
+  ├─ Messages: 4
+  └─ Roles: carrire bot
+
+• darkwall0901_#0
+  ├─ ID: 1238914120179515402
+  ├─ Messages: 19
+  └─ Roles: Staff, Master Dungeon Carrier, Normal Dungeon Carrier, Slayer Carrier
+
+• behappyinlife#0
+  ├─ ID: 957550424611749888
+  ├─ Messages: 6
+  └─ Roles: .
+
+====================================================================================================
+                                         End of Transcript                                          
+====================================================================================================
+
+This transcript was automatically generated by the FakePixel Giveaways Ticket System.
+For any questions or concerns, please contact a staff member.

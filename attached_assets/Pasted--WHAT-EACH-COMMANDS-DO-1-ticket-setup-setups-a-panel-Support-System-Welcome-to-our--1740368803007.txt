@@ -1,0 +1,70 @@
+# WHAT EACH COMMANDS DO?:
+
+1. /ticket_setup - setups a panel [
+🎫 Support System
+Welcome to our support system! Choose a category below to create a ticket.
+
+Available Categories:
+
+🎫 Support Tickets
+• Get assistance with general issues
+• Ask questions about our services
+• Get help with technical problems
+
+💎 Rank Purchases
+• Buy server ranks and perks
+• View available ranks
+• Process payments securely
+
+👥 Staff Applications
+• Apply for staff positions
+• Show your experience
+• Join our team
+
+🐛 Bug Reports
+• Report technical issues
+• Help improve our services
+• Report game bugs
+
+⚖️ Ban Appeals
+• Appeal your punishment
+• Explain your situation
+• Request unban review
+
+🚫 Player Reports
+• Report rule breakers
+• Report inappropriate behavior
+• Help keep our community safe]
+
+including a drop down menu with these options
+
+[
+🎫 Support Tickets - Get help with general issues
+💎 Rank Purchases - Buy server ranks
+👥 Staff Applications - Apply for staff position
+🐛Bug Reports - Report bugs or technical issues
+⚖️Ban Appeals - Appeal a punishment
+🚫Player Reports - Report a player
+]
+
+3. /conformationmsg :msg: - used to set conformation msg which ask after pressing call staff button.
+
+4. /addrank :rank_name: :rank_colour: :rank_emoji: - used to add ranks which shows after selecting 'rank purchase' section
+
+5. /removerank :rank_name: - used to remove ranks which shows after selecting 'rank purchase' section
+
+6. /addmethod :method_name: :method_emoji: used to add a payment method which shows in a dropdown menu after selecting rank
+
+7. /removemethod :method_name: - used to add a payment method which shows in a dropdown menu after selecting rank
+
+8. /setprices :method_name: :rank_name: :price: - used to set prices of each ranks.
+
+9. /closeticket - used to close a ticket which opens by a user
+
+10. /ban_user :user: - bans a user and sends logs in logs channel.
+
+11. /kick_user :user: - kicks a user and sends logs in logs channel.
+
+12. /mute_user :user: :time in minute: - mute a user and sends logs in logs channel.
+
+13. /custommsg :category: - used to set/change custom msg which shows in the msg send by bot on creating a ticket.

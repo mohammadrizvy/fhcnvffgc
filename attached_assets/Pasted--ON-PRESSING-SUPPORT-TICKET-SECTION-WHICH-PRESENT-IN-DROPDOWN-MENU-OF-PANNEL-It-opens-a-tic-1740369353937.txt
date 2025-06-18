@@ -1,0 +1,29 @@
+# ON PRESSING 'SUPPORT TICKET' SECTION WHICH PRESENT IN DROPDOWN MENU OF PANNEL - 
+
+It opens a ticket under 'SUPPORT' category with creator name and a ticket number of 5 digit.
+It contains 3 buttons and a dropdown menu along with a custom msg that can be set by /custommsg :category: command, creator name, ticket number, details filled before, category and claimed by.
+
+# ON PRESSING 'RANK PURCHASE' SECTION WHICH PRESENT IN DROPDOWN MENU OF PANNEL - 
+
+It opens a ticket under 'RANK PURCHASES' category with creator name and a ticket number of 5 digit.
+It contains 3 buttons and a dropdown menu along with a custom msg that can be set by /custommsg :category: command, creator name, ticket number, details filled before, category and claimed by. And 3 more payment buttons.
+
+# ON PRESSING 'STAFF APPLICATION' SECTION WHICH PRESENT IN DROPDOWN MENU OF PANNEL - 
+
+It opens a ticket under 'STAFF APPLICATIONS' category with creator name and a ticket number of 5 digit.
+It contains 3 buttons and a dropdown menu along with a custom msg that can be set by /custommsg :category: command, creator name, ticket number, details filled before, category and claimed by.
+
+# ON PRESSING 'BUG REPORT' SECTION WHICH PRESENT IN DROPDOWN MENU OF PANNEL - 
+
+It opens a ticket under 'BUG REPORTS' category with creator name and a ticket number of 5 digit.
+It contains 3 buttons and a dropdown menu along with a custom msg that can be set by /custommsg :category: command, creator name, ticket number, details filled before, category and claimed by.
+
+# ON PRESSING 'BAN APPEAL' SECTION WHICH PRESENT IN DROPDOWN MENU OF PANNEL - 
+
+It opens a ticket under 'BAN APPEALS' category with creator name and a ticket number of 5 digit.
+It contains 3 buttons and a dropdown menu along with a custom msg that can be set by /custommsg :category: command, creator name, ticket number, details filled before, category and claimed by.
+
+# ON PRESSING 'REPORT A PLAYER' SECTION WHICH PRESENT IN DROPDOWN MENU OF PANNEL - 
+
+It opens a ticket under 'REPORT PLAYERS' category with creator name and a ticket number of 5 digit.
+It contains 3 buttons and a dropdown menu along with a custom msg that can be set by /custommsg :category: command, creator name, ticket number, details filled before, category and claimed by.
