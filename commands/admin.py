@@ -147,83 +147,6 @@ class TicketSetupView(discord.ui.View):
         self.bot = bot
         self.add_item(TicketCategorySelect())
 
-class TicketCategorySelect(discord.ui.Select):
-    """Dropdown for ticket category selection"""
-    def __init__(self, bot):
-        self.bot = bot
-        options = [
-            discord.SelectOption(
-                label="Slayer Carry",
-                description="Get help with any slayer boss carry",
-                value="Slayer Carry"
-            ),
-            discord.SelectOption(
-                label="Normal Dungeon Carry", 
-                description="Complete any normal dungeon floor",
-                value="Normal Dungeon Carry"
-            ),
-            discord.SelectOption(
-                label="Master Dungeon Carry",
-                description="Master dungeon floor completion",
-                value="Master Dungeon Carry"
-            ),
-        ]
-        super().__init__(
-            placeholder="Select a service to create a ticket...",
-            min_values=1,
-            max_values=1,
-            options=options,
-            custom_id="ticket_category_select"
-        )
-
-    async def callback(self, interaction: discord.Interaction):
-        try:
-            selected_category = self.values[0]
-            logger.info(f"Selected category: {selected_category}")
-
-            # Check if user already has an open ticket
-            user_has_ticket = await storage.has_open_ticket(str(interaction.user.id))
-            if user_has_ticket:
-                existing_channel_id = await storage.get_user_ticket_channel(str(interaction.user.id))
-                if existing_channel_id:
-                    existing_channel = interaction.guild.get_channel(int(existing_channel_id))
-                    if existing_channel:
-                        await interaction.response.send_message(
-                            embed=discord.Embed(
-                                title="Ticket Already Exists",
-                                description=f"You already have an open ticket: {existing_channel.mention}. Please close your existing ticket before creating a new one.",
-                                color=discord.Color.orange()
-                            ),
-                            ephemeral=True
-                        )
-                        return
-
-            # Show appropriate modal based on category
-            if selected_category == "Slayer Carry":
-                modal = SlayerCarryModal(self.bot)
-            elif selected_category == "Normal Dungeon Carry":
-                modal = NormalDungeonModal(self.bot)
-            elif selected_category == "Master Dungeon Carry":
-                modal = MasterDungeonModal(self.bot)
-            else:
-                await interaction.response.send_message(
-                    "❌ Invalid category selected.",
-                    ephemeral=True
-                )
-                return
-
-            await interaction.response.send_modal(modal)
-
-        except Exception as e:
-            logger.error(f"Error in category selection: {e}")
-            try:
-                await interaction.response.send_message(
-                    "❌ An error occurred while processing your request.",
-                    ephemeral=True
-                )
-            except:
-                pass
-
 class SlayerCarryModal(discord.ui.Modal):
     def __init__(self, bot):
         super().__init__(title="Slayer Carry Request")
@@ -546,6 +469,43 @@ class AdminCommands(commands.Cog):
                 ),
                 ephemeral=True
             )
+
+    @app_commands.command(name="ticket_setup")
+    async def ticket_setup(self, interaction: discord.Interaction, channel: discord.TextChannel = None):
+        """Set up the ticket system in a channel"""
+        if not await check_admin_permissions(interaction):
+            return
+        
+        target_channel = channel or interaction.channel
+        await interaction.response.defer()
+        
+        embed = discord.Embed(
+            title="🎫 Dungeon & Slayer Carry Services",
+            description=(
+                "Welcome to our carry services! Select a service below to create a ticket.\n\n"
+                "**Available Services:**\n"
+                "⚔️ **Slayer Carry** - Get help with any slayer boss\n"
+                "🏰 **Normal Dungeon** - Complete any normal dungeon floor\n"
+                "👑 **Master Dungeon** - Master dungeon floor completion\n\n"
+                "**How it works:**\n"
+                "1. Select your desired service\n"
+                "2. Fill out the required information\n"
+                "3. Wait for a carrier to assist you\n\n"
+                "**Note:** Please have your requirements ready before creating a ticket."
+            ),
+            color=discord.Color.blue()
+        )
+        
+        # Add footer with server name
+        embed.set_footer(text=f"{interaction.guild.name} • Support System", icon_url=interaction.guild.icon.url if interaction.guild.icon else None)
+        
+        view = TicketCategoryView(self.bot)
+        await target_channel.send(embed=embed, view=view)
+        
+        await interaction.followup.send(
+            f"✅ Ticket system set up in {target_channel.mention}",
+            ephemeral=True
+        )
 
 async def setup(bot):
     await bot.add_cog(AdminCommands(bot))

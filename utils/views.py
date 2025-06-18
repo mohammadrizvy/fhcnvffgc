@@ -902,31 +902,30 @@ class RenameTicketModal(ui.Modal, title="Rename Ticket"):
 
 class TicketCategorySelect(discord.ui.Select):
     """Select menu for ticket categories"""
-    def __init__(self):
+    def __init__(self, bot):
+        self.bot = bot
         options = [
             discord.SelectOption(
                 label="Slayer Carry",
-                description="Request a Slayer Carry service",
-                emoji="⚔️"
+                description="Get help with any slayer boss carry",
+                emoji="⚔️",
+                value="Slayer Carry"
             ),
             discord.SelectOption(
                 label="Normal Dungeon Carry",
-                description="Request a Normal Dungeon Carry service",
-                emoji="🏰"
+                description="Complete any normal dungeon floor",
+                emoji="🏰",
+                value="Normal Dungeon Carry"
             ),
             discord.SelectOption(
                 label="Master Dungeon Carry",
-                description="Request a Master Dungeon Carry service",
-                emoji="👑"
-            ),
-            discord.SelectOption(
-                label="Staff Applications",
-                description="Apply to become a staff member",
-                emoji="📝"
+                description="Master dungeon floor completion",
+                emoji="👑",
+                value="Master Dungeon Carry"
             )
         ]
         super().__init__(
-            placeholder="Select ticket category...",
+            placeholder="Select a service to create a ticket...",
             min_values=1,
             max_values=1,
             options=options,
@@ -942,6 +941,23 @@ class TicketCategorySelect(discord.ui.Select):
             # Get the selected category
             category = self.values[0]
             
+            # Check if user already has an open ticket
+            user_has_ticket = await storage.has_open_ticket(str(interaction.user.id))
+            if user_has_ticket:
+                existing_channel_id = await storage.get_user_ticket_channel(str(interaction.user.id))
+                if existing_channel_id:
+                    existing_channel = interaction.guild.get_channel(int(existing_channel_id))
+                    if existing_channel:
+                        await interaction.followup.send(
+                            embed=discord.Embed(
+                                title="Ticket Already Exists",
+                                description=f"You already have an open ticket: {existing_channel.mention}. Please close your existing ticket before creating a new one.",
+                                color=discord.Color.orange()
+                            ),
+                            ephemeral=True
+                        )
+                        return
+            
             # Create ticket
             ticket_number = await storage.create_ticket(
                 user_id=interaction.user.id,
@@ -956,6 +972,62 @@ class TicketCategorySelect(discord.ui.Select):
                 )
                 return
             
+            # Create ticket channel
+            channel = await self.create_ticket_channel(interaction, category, ticket_number)
+            
+            if not channel:
+                return
+            
+            # Create ticket embed
+            embed = discord.Embed(
+                title=f"Ticket #{ticket_number}",
+                description=(
+                    f"**Category:** {category}\n"
+                    f"**Created by:** {interaction.user.mention}\n"
+                    f"**Status:** 🔄 Awaiting Response\n\n"
+                    "**Ticket Information:**\n"
+                    "• Please provide all necessary details about your request\n"
+                    "• A carrier will assist you shortly\n"
+                    "• Use the buttons below to manage your ticket"
+                ),
+                color=discord.Color.blue(),
+                timestamp=datetime.utcnow()
+            )
+            
+            # Add footer with server name
+            embed.set_footer(text=f"{interaction.guild.name} • Ticket System", icon_url=interaction.guild.icon.url if interaction.guild.icon else None)
+
+            # Add ticket controls
+            view = TicketControlsView(self.bot, ticket_number)
+            
+            # Send initial message
+            await channel.send(
+                content=f"{interaction.user.mention} Welcome to your ticket! A carrier will assist you shortly.",
+                embed=embed,
+                view=view
+            )
+            
+            # Send confirmation to user
+            await interaction.followup.send(
+                f"✅ Your ticket has been created in {channel.mention}",
+                ephemeral=True
+            )
+            
+            logger.info(f"Ticket {ticket_number} created by {interaction.user.name} for category {category}")
+            
+        except Exception as e:
+            logger.error(f"Error in TicketCategorySelect callback: {e}")
+            try:
+                await interaction.followup.send(
+                    "❌ An error occurred while creating your ticket. Please try again later.",
+                    ephemeral=True
+                )
+            except:
+                pass
+
+    async def create_ticket_channel(self, interaction: discord.Interaction, category: str, ticket_number: str) -> Optional[discord.TextChannel]:
+        """Create a ticket channel with proper permissions"""
+        try:
             # Create ticket channel
             overwrites = {
                 interaction.guild.default_role: discord.PermissionOverwrite(read_messages=False),
@@ -990,44 +1062,32 @@ class TicketCategorySelect(discord.ui.Select):
                 category=interaction.channel.category
             )
             
-            # Create ticket embed
-            embed = discord.Embed(
-                title=f"Ticket #{ticket_number}",
-                description=f"Category: {category}\nCreated by: {interaction.user.mention}",
-                color=discord.Color.blue(),
-                timestamp=datetime.utcnow()
-            )
+            return channel
             
-            # Add ticket controls
-            view = TicketControlsView(interaction.client, ticket_number)
-            
-            # Send initial message
-            await channel.send(
-                content=f"{interaction.user.mention} Welcome to your ticket!",
-                embed=embed,
-                view=view
-            )
-            
-            # Send confirmation to user
+        except discord.Forbidden:
+            logger.error(f"Bot lacks permissions to create channel in {interaction.guild.name}")
             await interaction.followup.send(
-                f"✅ Your ticket has been created in {channel.mention}",
+                "❌ I don't have permission to create channels. Please contact an administrator.",
                 ephemeral=True
             )
-            
-            logger.info(f"Ticket {ticket_number} created by {interaction.user.name} for category {category}")
-            
+            return None
+        except discord.HTTPException as e:
+            logger.error(f"HTTP error creating channel: {e}")
+            await interaction.followup.send(
+                "❌ Failed to create ticket channel. Please try again later.",
+                ephemeral=True
+            )
+            return None
         except Exception as e:
-            logger.error(f"Error in TicketCategorySelect callback: {e}")
-            try:
-                await interaction.followup.send(
-                    "❌ An error occurred while creating your ticket. Please try again later.",
-                    ephemeral=True
-                )
-            except:
-                pass
+            logger.error(f"Unexpected error creating channel: {e}")
+            await interaction.followup.send(
+                "❌ An unexpected error occurred. Please try again later.",
+                ephemeral=True
+            )
+            return None
 
 class TicketCategoryView(discord.ui.View):
     """View containing the category select menu"""
-    def __init__(self):
+    def __init__(self, bot):
         super().__init__(timeout=None)
-        self.add_item(TicketCategorySelect())
+        self.add_item(TicketCategorySelect(bot))
